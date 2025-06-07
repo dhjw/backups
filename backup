@@ -1,0 +1,46 @@
+#!/bin/bash
+# wrapper for restic backups
+# restic (or restic.exe) and bash (or bash.exe) expected to be in path
+# files in script folder (mandatory):
+#  backup.cfg backup-includes backup-excludes backup-pass
+
+cd $(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd) # change to script dir
+
+restic self-update &>/dev/null # update restic
+source "./backup.cfg" # load config
+
+# initialize repo
+if [ "$1" == "init" ]; then restic init -r $REPO; echo "put the password in backup-pass (chmod 600)"; exit; fi
+
+# prune old snapshots
+function prune() {
+    RESTIC_PASSWORD_FILE="./backup-pass" \
+    restic forget -c --keep-daily $KEEP_DAILY --keep-weekly $KEEP_WEEKLY --keep-monthly $KEEP_MONTHLY --keep-yearly $KEEP_YEARLY --prune -r $REPO &>>$1
+}
+if [ "$1" == "prune" ]; then prune "/dev/stdout"; exit; fi
+
+# run backup, live or dry
+if [ "$1" == "run" ]; then
+    DRY=""
+    OUT="$LOG_FILE"
+    if [ "$2" == "dry" ]; then DRY=" --dry-run"; OUT="/dev/stdout"; fi
+    if [ "$2" == "dryv" ]; then DRY=" -vv --dry-run"; OUT="/dev/stdout"; fi
+    echo -e "\n--------- $(date) ----------" &>>$OUT
+    if [ ! -z "$BACKUP_PRE" ]; then
+        bash -c "$BACKUP_PRE" &>>$OUT
+        echo &>>$OUT
+	fi
+    RESTIC_PASSWORD_FILE="./backup-pass" \
+    restic backup$DRY --files-from "./backup-includes" --exclude-file "./backup-excludes" --repo $REPO \
+    -o s3.storage-class=$STORAGE_CLASS &>>$OUT
+    echo &>>$OUT
+    if [ ! -z "$BACKUP_POST" ]; then
+        bash -c "$BACKUP_POST" &>>$OUT
+        echo &>>$OUT
+	fi
+    prune "$OUT"
+    exit
+fi
+
+# else pass to restic with loaded vars
+RESTIC_PASSWORD_FILE="./backup-pass" restic --repo $REPO -o s3.storage-class=$STORAGE_CLASS "$@"
