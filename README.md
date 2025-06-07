@@ -104,4 +104,5 @@ Load another terminal to browse the folder. When done, Ctrl-C in the first one t
 On Windows, check out `bash -c "./backup help restore"`
 
 ## Notes
-- The log won't currently auto-rotate or delete but shouldn't get too big with daily runs
+- The log doesn't currently rotate but shouldn't get too big with daily runs. If it does you can delete it and it will be recreated automatically.
+- There's currently no error-handling. Restic should gracefully recover in most cases. Check on your backups occasionally.
