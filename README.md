@@ -94,7 +94,7 @@ On Linux, set up a cron job as root, e.g. `0 0 * * * backup run`
 On Windows, open Task Scheduler and create a daily task with Program/script `"C:\Program Files\Git\bin\bash.exe"` and Arguments `-c "C:\Users\d\bin\backups\backup run"` (with your path). Enable the option "Run whether user logged on or not" on the General tab to prevent a terminal window from popping up.
 
 ## Restoring Files
-On Linux, you can FUSE mount remote backups for browsing with the mount command.
+On Linux, you can mount remote backups for browsing with the mount command.
 ```
 mkdir mnt
 backup mount ./mnt
