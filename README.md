@@ -26,7 +26,7 @@ Create a `backup-pass` file with a secure password:
 ```
 bash -c "tr -dc 'A-Za-z0-9' < /dev/urandom | head -c 48 > backup-pass; cat backup-pass; echo"
 ```
-Save the password somewhere safe because if you lose it you won't be able to access your backups. I use a [KeePass2](https://keepass.info/download.html) vault copied to USB, Google Drive, Dropbox, etc.
+Save the password somewhere safe because if you lose it you won't be able to access your backups. I use a [KeePass2](https://keepass.info/download.html) vault copied to a USB drive and a few cloud services.
 
 On Linux, files should be owned by root with restrictive permissions `chmod 600 backup*; chmod 700 backup`. For ease of use, put the `backup` wrapper script in your path, e.g. with a symlink. `cd /usr/local/bin; ln -s backups/backup`.
 
