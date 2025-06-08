@@ -76,6 +76,7 @@ Or you could create scripts and call them. The current folder at runtime is alwa
 export BACKUP_PRE="./backup-pre" # run my scripts
 export BACKUP_POST="./backup-post"
 ```
+Note currently only bash scripts are supported, even on Windows.
 
 ## Commands
 
