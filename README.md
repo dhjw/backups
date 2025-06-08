@@ -5,7 +5,9 @@ Who knew cross-platform backups could be so easy?
 ## Setup
 
 ### Install Restic
-Many Linux distros install a version with `self-update` disabled if you use the package manager. Restic is just a single binary, so you can simply grab it from the [Releases](https://github.com/restic/restic/releases/) and put it in your path.
+Restic is just a single binary, so you can simply grab it from its [Releases](https://github.com/restic/restic/releases/) page and put it in your path.
+
+Note that many Linux distros install a version with the `self-update` feature disabled if you use the package manager, so it's not recommended to install that way.
 
 On Linux (amd64):
 ```
