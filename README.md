@@ -85,7 +85,7 @@ On Windows, run all commands like `bash -c "./<command>"` (if in script folder, 
 - Edit `backup-includes` and `backup-excludes` to include and exclude files for backup. Some advanced wildcards and negation can be seen in the example files, or view the [docs](https://restic.readthedocs.io/en/latest/040_backup.html#excluding-files).
 - To do a dry run, use`backup run dry` or `backup run dryv` (verbose - shows matched files). Dry runs write to stdout, normal runs write to the log file. On Windows, you can set up a `grep` alias [like this](https://g.co/gemini/share/d04ea9cc84e7) to pipe to (`bash -c "./backup run dryv" | grep something`) to check if the files you want are included.
 - After a real backup with `backup run`, you can list snapshots with `backup snapshots` and view more about a snapshot with `backup ls <snapshot-id>`
-- The wrapper passes through most other commands with your credentials and settings applied. Try `backup help` and `backup help <command>`
+- The wrapper passes through most other commands to the restic binary with your credentials and settings applied. Try `backup help` and `backup help <command>`
 
 ## Scheduled Tasks
 On Linux, set up a cron job as root, e.g. `0 0 * * * backup run`
