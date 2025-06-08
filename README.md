@@ -80,7 +80,7 @@ Note currently only bash scripts are supported, even on Windows.
 
 ## Commands
 
-On Windows, run all commands like `bash -c "./<command>"` (if in script folder, else use the full path. It's important to use ./ as there's another Windows executable named backup.)
+On Windows, run all commands like `bash -c "./<command>"` (if in script folder, else use the full path).
 
 - First, run `backup init` to initialize the repository and set the backup encryption password (the one you generated earlier).
 - Edit `backup-includes` and `backup-excludes` to include and exclude files for backup. Some advanced wildcards and negation can be seen in the example files, or view the [docs](https://restic.readthedocs.io/en/latest/040_backup.html#excluding-files).
