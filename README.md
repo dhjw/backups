@@ -32,10 +32,11 @@ Save the password somewhere safe because if you lose it you won't be able to acc
 
 On Linux, files should be owned by root with restrictive permissions `chmod 600 backup*; chmod 700 backup`. For ease of use, put the `backup` wrapper script in your path, e.g. with a symlink. `cd /usr/local/bin; ln -s backups/backup`.
 
-### Example for Amazon S3
+### Set up Storage
 
-Currently this script expects to be used with S3-compatible endpoints, however it should be easy to adapt to other Restic-supported services.
+Currently this script expects to be used with S3-compatible endpoints like AWS, BackBlaze, etc, however it should be easy to adapt to other Restic-supported services.
 
+#### Amazon S3
 - Create an [S3](https://console.aws.amazon.com/s3) bucket, e.g. `yourdevice-backups`
 - Edit `backup.cfg` to contain the region and bucket name
 - In [IAM](https://console.aws.amazon.com/iam), create a user with an inline policy:
