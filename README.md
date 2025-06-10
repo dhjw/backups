@@ -92,10 +92,11 @@ On Windows, run all commands like `bash -c "./<command>"` (if in script folder, 
 - The wrapper passes through most other commands to the restic binary with your credentials and settings applied. Try `backup help` and `backup help <command>`
 
 ## Scheduled Tasks
-On Linux, set up a cron job as root, e.g. `0 0 * * * backup run`
-
+On Linux, set up a daily cron job as root, e.g. `0 0 * * * backup run`
 
 On Windows, open Task Scheduler and create a daily task with Program/script `"C:\Program Files\Git\bin\bash.exe"` and Arguments`-c 'C:\Users\d\bin\backups\backup run'` (with your path, single quotes are required). Enable the option "Run whether user is logged on or not" on the General tab to prevent a terminal window from popping up. You can Right-click > Run the task to make sure it creates a snapshot as expected.
+
+It's also possible to schedule snapshots more frequently than daily.
 
 ## Restoring Files
 On Linux, you can mount remote backups for browsing with the mount command. Load another terminal to browse the folder. When done, Ctrl-C in the first one to unmount.
