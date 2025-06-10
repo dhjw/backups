@@ -34,7 +34,7 @@ On Linux, files should be owned by root with restrictive permissions `chmod 600 
 
 ### Set up Storage
 
-Currently this script expects to be used with S3-compatible endpoints like [AWS](https://aws.amazon.com/s3/), [BackBlaze](https://www.backblaze.com/cloud-storage), etc, however it should be easy to adapt to other Restic-supported services.
+Currently this script expects to be used with S3-compatible endpoints like [AWS](https://aws.amazon.com/s3/), [BackBlaze](https://www.backblaze.com/cloud-storage), etc., however it should be easy to adapt to other Restic-supported services.
 
 #### Amazon S3
 - Create an [S3](https://console.aws.amazon.com/s3) bucket, e.g. `yourdevice-backups`
