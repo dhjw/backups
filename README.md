@@ -93,7 +93,7 @@ On Windows, run all commands like `bash -c "./<command>"` (if in script folder, 
 ## Scheduled Tasks
 On Linux, set up a daily cron job as root, e.g. `0 0 * * * backup run`
 
-On Windows, open Task Scheduler and create a daily task with Program/script `"C:\Program Files\Git\bin\bash.exe"` and Arguments`-c 'C:\Users\d\bin\backups\backup run'` (with your path, single quotes are required). Enable the option "Run whether user is logged on or not" on the General tab to prevent a terminal window from popping up. You can Right-click > Run the task to make sure it creates a snapshot as expected.
+On Windows, open Task Scheduler and create a daily task with Program/script `"C:\Program Files\Git\bin\bash.exe"` and Arguments`-c 'C:\Users\d\bin\backups\backup run'` (with your path, single quotes are important). Enable "Run whether user is logged on or not" on the General tab to prevent a terminal window from popping up. Also enable "Run task as soon as possible after a scheduled start is missed" on the Settings page. You can Right-click > Run the task to make sure it creates a snapshot as expected.
 
 It's also possible to schedule backups more frequently.
 
